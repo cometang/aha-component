@@ -1,14 +1,10 @@
 <template>
     <div>
         <div class="box">
-            <div class="title-search-box">
-
-            </div>
             <div class="content-box">
                 <el-table v-loading="isLoading" :data="tableData" border fit highlight-current-row style="width: 100%">
                     <el-table-column width="180px" align="center" label="姓名">
                         <template slot-scope="{row}">
-
                             <template v-if="row.isEdit">
                                 <el-input v-model="row.name" class="edit-input" size="small" />
                             </template>
@@ -87,6 +83,8 @@
                     {name:'xxx',age:22,dateTimer:1565947147000,tell:'15899699987',isEdit:false},{name:'xxx',age:22,dateTimer:1565947147000,tell:'15899699987',isEdit:false},
                 ],
 
+                tableHead:[{key:'name',text:'姓名',type:'string'},{key:'age',text:'年龄',type:'int'},{key:'dateTimer',text:'时间',type:'dateTime'},{key:'tell',text:'电话号码',type:'string'}],
+
                 isLoading:false,
                 // editScopeData:{}
                 editRowData:{},
@@ -126,6 +124,11 @@
                 let date = new Date(val)
                 let timer =  date.toLocaleDateString()+ ' '+date.toLocaleTimeString('chinese',{hour12:false})
                 return timer
+            },
+
+            /** 新增一行数据*/
+            addDataBtn(){
+
             }
         },
         mounted(){
@@ -136,6 +139,7 @@
 
 <style scoped lang="scss">
     .box{
+
         width: auto;
         padding: 10px;
     }
@@ -145,6 +149,12 @@
     }
     .content-box{
         width: auto;
+    }
+    .btn-row{
+        width: auto;
+        height: 50px;
+        line-height: 50px;
+
     }
 
 
